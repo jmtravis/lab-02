@@ -7,7 +7,7 @@ use python "input->" function, enter a line of a few letters, such as "abcd"
 """
 import socket
 
-HOST = "127.0.0.1"  # The server's hostname or IP address
+HOST = "172.20.10.5"  # The server's hostname or IP address 127.0.0.1
 PORT = 5000  # The port used by the server
 
 
