@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     struct sockaddr_in serv_addr, cli_addr;
     /* 3. What is a struct? What's the structure of sockaddr_in?
      *   A struct is used to group several related variables into one place. The sockaddr_in structure contains sin_family, sin_port, sin_addr, and sin_zero[8].     
-   
+     */ 
    int n;
     if (argc < 2) {
         fprintf(stderr,"ERROR, no port provided\n");
