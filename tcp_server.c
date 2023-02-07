@@ -29,9 +29,9 @@ int main(int argc, char *argv[])
 
     struct sockaddr_in serv_addr, cli_addr;
     /* 3. What is a struct? What's the structure of sockaddr_in?
-     *   A struct is used to group several related variables into one place. The sockaddr_in structure has sin_family.
-    
-    int n;
+     *   A struct is used to group several related variables into one place. The sockaddr_in structure contains sin_family, sin_port, sin_addr, and sin_zero[8].     
+   
+   int n;
     if (argc < 2) {
         fprintf(stderr,"ERROR, no port provided\n");
         exit(1);
@@ -63,7 +63,8 @@ int main(int argc, char *argv[])
     
     while(1) {
         /* 6.  Why use while(1)? Based on the code below, what problems might occur if there are multiple simultaneous connections to handle?
-        *   Causes an infinite loop until a certain action is completed. The simulataneous connections are handled one by one.  
+        *   The while(1) causes an infinite loop until a certain action is completed. 
+	*The problems that may occur are that simulataneous connections are handled one by one which can take time.  
         */
         
 	char buffer[256];
@@ -72,7 +73,8 @@ int main(int argc, char *argv[])
                     &clilen);
 	/* 7. Research how the command fork() works. How can it be applied here to better handle multiple connections?
          *  Fork system call is used for creating a new process, which is called child process, which runs concurrently with the process that makes the fork() call (parent process). 
-	 * After a new child process is created, both processes will execute the next instruction following the fork() system call. Fork creates a new process and allows for each new connection for a new process. 
+	 * After a new child process is created, both processes will execute the next instruction following the fork() system call. 
+	 * The fork can be used here to create a new process and allow for each new connection run on a new process simulataneously . 
          */
         
 	if (newsockfd < 0) 
